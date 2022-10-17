@@ -1,7 +1,5 @@
 const express = require('express');
 const { UserController } = require("../controller")
-const validator = require("../common/validator")
-// const serverApp =require("../common/jdocsSwagger")
 const { init } = require('express-oas-validator');
 const expressJSDocSwagger = require('express-jsdoc-swagger');
 const router = express.Router()
@@ -30,9 +28,10 @@ const serverApp = () => new Promise(resolve => {
         resolve(app);
     })
 })
+
 module.exports = serverApp
 
-
+//********************************************************************************************* */
 
 // const express = require('express');
 // const validator = require("../common/validator")
