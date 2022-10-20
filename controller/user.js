@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const jwt = require('jsonwebtoken');
-const {UserModel} = require("../model")
+const { UserModel } = require("../model")
 
 /**
  * A User
@@ -36,7 +36,7 @@ const {UserModel} = require("../model")
  * }
  */
 
-  const createUser= async (req, res) => {
+const createUser = async (req, res) => {
     try {
         const { email, firstName, lastName, password } = req.body
         const user = await UserModel.findOne({ email });
@@ -84,7 +84,7 @@ const {UserModel} = require("../model")
  * }
  */
 
- const login= async (req, res) => {
+const login = async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await UserModel.findOne({
@@ -128,11 +128,8 @@ const {UserModel} = require("../model")
  * }
  */
 
-const getAllUSer= async (req, res,next) => {
+const getAllUSer = async (req, res, next) => {
     try {
-       /// console.log("xnjjjjjjjjjjjjjjjjjjjjjjjjjj",next);
-       
-       console.log("999999999999999999999999999999999999999999999999999");
         const user = await UserModel.find();
         return res.status(200).json({ message: "Get All Users successfully", data: user });
     } catch (error) {
@@ -155,7 +152,7 @@ const getAllUSer= async (req, res,next) => {
  * }
  */
 
-const getUserDetails= async (req, res) => {
+const getUserDetails = async (req, res) => {
     try {
         const { id } = req.params
         const user = await UserModel.findById({ _id: id });
@@ -196,7 +193,7 @@ const getUserDetails= async (req, res) => {
  */
 
 
-const updateUser=async (req, res) => {
+const updateUser = async (req, res) => {
     try {
         const { id } = req.params
         const user = await UserModel.findById({ _id: id });
@@ -214,7 +211,7 @@ const updateUser=async (req, res) => {
 }
 
 const UserController = {
-    login, createUser,getUserDetails,updateUser,getAllUSer
+    login, createUser, getUserDetails, updateUser, getAllUSer
 }
 
 module.exports = UserController
